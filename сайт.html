@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Обучающий модуль | Инвестиции в новостройки Камбоджи 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f4f6f9;
+    color: #2c3e50;
+    line-height: 1.6;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 24px rgba(30,60,114,0.2);
+  }
+  .header h1 { font-size: 28px; margin-bottom: 8px; }
+  .header .subtitle { opacity: 0.9; font-size: 15px; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+
+  /* PROGRESS */
+  .progress-bar {
+    background: white;
+    padding: 18px 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .progress-track {
+    flex: 1;
+    height: 10px;
+    background: #e0e6ed;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #27ae60, #2ecc71);
+    transition: width 0.5s ease;
+  }
+  .progress-text { font-weight: 600; color: #1e3c72; min-width: 60px; }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .tab-btn {
+    padding: 10px 18px;
+    background: #f0f3f7;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #5a6c7d;
+    transition: all 0.25s;
+  }
+  .tab-btn:hover { background: #e3e8ef; }
+  .tab-btn.active {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    box-shadow: 0 4px 10px rgba(30,60,114,0.3);
+  }
+
+  /* SECTIONS */
+  .section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: none;
+    animation: fadeIn 0.4s;
+  }
+  .section.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .section h2 {
+    color: #1e3c72;
+    font-size: 22px;
+    margin-bottom: 8px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #2a5298;
+    display: inline-block;
+  }
+  .section .intro {
+    color: #7a8a99;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 14px;
+  }
+  th {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #e8ecf1;
+    vertical-align: top;
+  }
+  tr:hover td { background: #f8fafc; }
+  .score {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .score-high { background: #d4edda; color: #155724; }
+  .score-mid { background: #fff3cd; color: #856404; }
+  .score-low { background: #f8d7da; color: #721c24; }
+  .score-new { background: #e2e3e5; color: #383d41; }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+  }
+  .card {
+    background: linear-gradient(135deg, #f8fafc, #ffffff);
+    border-left: 4px solid #2a5298;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .card h3 { color: #1e3c72; font-size: 16px; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: #5a6c7d; }
+  .card .number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #27ae60;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  /* ALERTS */
+  .alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-icon { font-size: 20px; flex-shrink: 0; }
+  .alert-success { background: #d4edda; color: #155724; border-left: 4px solid #27ae60; }
+  .alert-warning { background: #fff3cd; color: #856404; border-left: 4px solid #f39c12; }
+  .alert-danger { background: #f8d7da; color: #721c24; border-left: 4px solid #c0392b; }
+  .alert-info { background: #d1ecf1; color: #0c5460; border-left: 4px solid #3498db; }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    margin: 15px 0;
+  }
+  .checklist li {
+    padding: 12px 15px 12px 45px;
+    background: #f8fafc;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+  .checklist li:hover { background: #eef2f7; }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #2a5298;
+  }
+  .checklist li.checked {
+    background: #d4edda;
+    color: #155724;
+  }
+  .checklist li.checked::before {
+    content: "✓";
+    color: #27ae60;
+    font-weight: bold;
+  }
+  .checklist li.checked span { text-decoration: line-through; }
+
+  /* STRATEGY STEPS */
+  .strategy-step {
+    display: flex;
+    gap: 18px;
+    padding: 18px;
+    background: #f8fafc;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 5px solid;
+  }
+  .strategy-step.s1 { border-color: #27ae60; }
+  .strategy-step.s2 { border-color: #3498db; }
+  .strategy-step.s3 { border-color: #9b59b6; }
+  .strategy-step.s4 { border-color: #e74c3c; }
+  .step-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e3c72;
+    min-width: 40px;
+  }
+  .step-content h4 { color: #1e3c72; margin-bottom: 5px; }
+  .step-content p { font-size: 14px; color: #5a6c7d; }
+
+  /* FINAL CONCLUSION */
+  .conclusion {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+  }
+  .conclusion h3 { margin-bottom: 12px; font-size: 18px; }
+  .conclusion ul { list-style: none; }
+  .conclusion li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    font-size: 14px;
+  }
+  .conclusion li:last-child { border-bottom: none; }
+  .conclusion strong { color: #ffd700; }
+
+  @media (max-width: 768px) {
+    .header h1 { font-size: 22px; }
+    .tab-btn { padding: 8px 12px; font-size: 13px; }
+    table { font-size: 12px; }
+    th, td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>🏢 Инвестиции в новостройки Камбоджи</h1>
+    <div class="subtitle">Обучающий модуль для сотрудников агентства «Инвестнедвижимость»</div>
+    <div class="badge">📅 Актуально на ноябрь 2026 · Фокус: Пномпень</div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar">
+    <span>📚 Прогресс обучения:</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">0%</span>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab1">1. Введение</button>
+    <button class="tab-btn" data-tab="tab2">2. Рейтинг застройщиков</button>
+    <button class="tab-btn" data-tab="tab3">3. Топ-проекты</button>
+    <button class="tab-btn" data-tab="tab4">4. Доходность</button>
+    <button class="tab-btn" data-tab="tab5">5. Локации роста</button>
+    <button class="tab-btn" data-tab="tab6">6. Стратегия</button>
+    <button class="tab-btn" data-tab="tab7">7. Чек-лист проверок</button>
+    <button class="tab-btn" data-tab="tab8">8. Итог</button>
+  </div>
+
+  <!-- SECTION 1: ВВЕДЕНИЕ -->
+  <div class="section active" id="tab1">
+    <h2>Введение: рынок Камбоджи глазами инвестора</h2>
+    <p class="intro">Ключевые факты, которые должен знать каждый агент агентства</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <span class="number">100%</span>
+        <h3>Freehold для иностранцев</h3>
+        <p>Через Strata Title — квартира выше 1-го этажа, одобрение MLMUPC, квота иностранцев ≤ 70%.</p>
+      </div>
+      <div class="card">
+        <span class="number">6–7%</span>
+        <h3>Реальный net yield</h3>
+        <p>Диапазон доходности качественных кондо в Пномпене в 2025–2026 гг.</p>
+      </div>
+      <div class="card">
+        <span class="number">2–7%</span>
+        <h3>Рост капитала</h3>
+        <p>Базовый сценарий +2–5%, оптимистичный +6–7% на 2026 год.</p>
+      </div>
+      <div class="card">
+        <span class="number">Koh Pich</span>
+        <h3>Лидер роста</h3>
+        <p>~9,3% годового роста цен против 5,1% по городу с 2020 года.</p>
+      </div>
+    </div>
+
+    <div class="alert alert-warning">
+      <span class="alert-icon">⚠️</span>
+      <div>
+        <strong>Важно:</strong> в Камбодже нет единого официального реестра застройщиков с оценкой надёжности.
+        Мы используем независимую оценку по критериям: завершённые проекты, передача ключей, качество строительства,
+        финансовая устойчивость и вероятность задержки.
+      </div>
+    </div>
+
+    <div class="alert alert-danger">
+      <span class="alert-icon">🚩</span>
+      <div>
+        <strong>Красный флаг рынка:</strong> застройщики, финансирующие стройку преимущественно предпродажами.
+        При замедлении продаж — высокий риск остановки работ и задержки передачи ключей.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: РЕЙТИНГ ЗАСТРОЙЩИКОВ -->
+  <div class="section" id="tab2">
+    <h2>Рейтинг застройщиков по надёжности</h2>
+    <p class="intro">Оценка по 100-балльной шкале: завершённые проекты, финансирование, качество, риски</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Застройщик</th>
+          <th>Профиль</th>
+          <th>Оценка</th>
+          <th>Комментарий</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Chip Mong Land</strong></td>
+          <td>Жильё, районы, конгломерат</td>
+          <td><span class="score score-high">80 · Vetted</span></td>
+          <td>Сильнейшая фин. база: цементный JV, банк, ТЦ. С 2017 г. сдаёт проекты. Минус — слабая публичная отчётность.</td>
+        </tr>
+        <tr>
+          <td><strong>Urbanland / ISI Land</strong></td>
+          <td>Премиальные кондо, mixed-use</td>
+          <td><span class="score score-high">78 · Vetted</span></td>
+          <td>10+ завершений с 2013 г., поддержка материал. конгломерата. Проверить юрлицо после ребрендинга.</td>
+        </tr>
+        <tr>
+          <td><strong>OCIC</strong></td>
+          <td>Мастер-девелопер: Koh Pich, аэропорт Techo</td>
+          <td><span class="score score-high">75 · Vetted</span></td>
+          <td>Минимальный риск незавершения. Десятилетия реализованных районов. Минус — непрозрачная корп. структура.</td>
+        </tr>
+        <tr>
+          <td><strong>Borey Peng Huoth</strong></td>
+          <td>Коттеджные посёлки, расширение в кондо</td>
+          <td><span class="score score-mid">74 · Qualified</span></td>
+          <td>30+ проектов, своя стройка. Мало раскрытых данных, риск избытка предложения в landed-сегменте.</td>
+        </tr>
+        <tr>
+          <td><strong>Creed Group</strong></td>
+          <td>Японский девелопер, премиум</td>
+          <td><span class="score score-mid">72 · Qualified</span></td>
+          <td>2 400+ юнитов сдано. Флагман задерживался, структура группы менее прозрачна.</td>
+        </tr>
+        <tr>
+          <td><strong>LZ Sea View</strong></td>
+          <td>Сиануквиль, апартаменты</td>
+          <td><span class="score score-mid">70 · Qualified</span></td>
+          <td>2 сданных объекта, УК на месте. Риск — концентрация на слабом рынке Сиануквиля.</td>
+        </tr>
+        <tr>
+          <td><strong>MegaKim / Time Square</strong></td>
+          <td>Кондо и mixed-use</td>
+          <td><span class="score score-mid">65 · Qualified</span></td>
+          <td>4 сданные башни 2017–2025. Противоречия по срокам и высотности в открытых источниках.</td>
+        </tr>
+        <tr>
+          <td><strong>Wangfu International</strong></td>
+          <td>Le Condé BKK1</td>
+          <td><span class="score score-mid">62 · Qualified</span></td>
+          <td>Один сданный проект. Гарантия 8% — обещание девелопера, не рыночный факт.</td>
+        </tr>
+        <tr>
+          <td><strong>MIRAKU Capital</strong></td>
+          <td>G.A.T.O Tower, BKK1</td>
+          <td><span class="score score-new">Unscored</span></td>
+          <td>Старт 2026, сдача Q4 2030. Спекулятивная покупка на ранней стадии без трека в Камбодже.</td>
+        </tr>
+        <tr>
+          <td><strong>Prince, L.Y.P., Morgan, Goldfame и др.</strong></td>
+          <td>Активные девелоперы</td>
+          <td><span class="score score-new">Требуют проверки</span></td>
+          <td>Встречаются в каталогах, но мало независимых данных о сроках и фин. устойчивости.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info">
+      <span class="alert-icon">💡</span>
+      <div>
+        <strong>Для клиента:</strong> «Vetted» — проверенный с фактами, «Qualified» — с оговорками,
+        «Unscored» — нет достаточной истории для оценки.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: ТОП-ПРОЕКТЫ -->
+  <div class="section" id="tab3">
+    <h2>Лучшие предложения: риск / доходность</h2>
+    <p class="intro">Сравнительная таблица ключевых проектов для рекомендаций клиентам</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Проект</th>
+          <th>Застройщик</th>
+          <th>Сдача</th>
+          <th>Цена от</th>
+          <th>Инвестиционный вывод</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Diamond Bay Garden</strong><br><small>Koh Pich</small></td>
+          <td>OCIC + Somerset/Ascott</td>
+          <td>2026<br><small>передача идёт</small></td>
+          <td>~$120 000</td>
+          <td>⭐ <strong>Сбалансированный выбор:</strong> низкий строй. риск, гарантия ~7% gross на 10 лет, реалистичный net 3,5–5,5%.</td>
+        </tr>
+        <tr>
+          <td><strong>Kingston Royale</strong><br><small>Boeung Tumpun</small></td>
+          <td>—</td>
+          <td>2027</td>
+          <td>~$50 000</td>
+          <td>💰 <strong>Доступный вход</strong> под арендный cash-flow. Обязательна проверка Strata Title и квоты для иностранцев.</td>
+        </tr>
+        <tr>
+          <td><strong>ODOM</strong><br><small>Tonle Bassac</small></td>
+          <td>—</td>
+          <td>2027</td>
+          <td>~$200 000</td>
+          <td>💎 <strong>Премиум-центр:</strong> выше порог входа, потенциал сохранения стоимости, но доходность ниже из-за цены.</td>
+        </tr>
+        <tr>
+          <td><strong>J Tower 3</strong><br><small>Tonle Bassac</small></td>
+          <td>J Tower</td>
+          <td>2028</td>
+          <td>~$300 000</td>
+          <td>👑 <strong>Люкс:</strong> горизонт 5+ лет, риск premium-сегмента. Только для долгосрочных инвесторов.</td>
+        </tr>
+        <tr>
+          <td><strong>G.A.T.O Tower</strong><br><small>BKK1</small></td>
+          <td>MIRAKU</td>
+          <td>Q4 2030</td>
+          <td>~$90 000</td>
+          <td>⚠️ <strong>Early-stage:</strong> девелопер без трека в Камбодже, срок ~4 года. Только спекулятивно с жёстким договором.</td>
+        </tr>
+        <tr>
+          <td><strong>Amazing Grace</strong><br><small>Сиемреап</small></td>
+          <td>—</td>
+          <td>~30 мес.</td>
+          <td>от $130 000</td>
+          <td>🌴 <strong>Курортная модель:</strong> 10-летняя программа аренды. Проверять УК и гарантированную доходность по договору.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 4: ДОХОДНОСТЬ -->
+  <div class="section" id="tab4">
+    <h2>Реальная доходность и капитализация</h2>
+    <p class="intro">Что обещают vs что получает инвестор на практике</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Показатель</th>
+          <th>Маркетинговые обещания</th>
+          <th>Реальные цифры 2025–2026</th>
+          <th>Комментарий</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Net rental yield</strong></td>
+          <td>10–12%+</td>
+          <td>6,2–8,7% (лучшие — BKK1, Chamkarmon)</td>
+          <td>Независимая оценка — 6–7%. Всё, что выше 8–9%, — маркетинговый красный флаг.</td>
+        </tr>
+        <tr>
+          <td><strong>Рост капитала (базовый)</strong></td>
+          <td>—</td>
+          <td>+2–5% в год</td>
+          <td>Умеренный рост, часть high-end кондо может дешеветь.</td>
+        </tr>
+        <tr>
+          <td><strong>Рост капитала (оптимистичный)</strong></td>
+          <td>—</td>
+          <td>+6–7% в год</td>
+          <td>Реалистично для Koh Pich, BKK1, Chamkarmon.</td>
+        </tr>
+        <tr>
+          <td><strong>Итоговая модель инвестора</strong></td>
+          <td>«Гарантированные 10%»</td>
+          <td>6–7% аренда + 2–7% рост стоимости</td>
+          <td>Сильный разброс по конкретному проекту.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-danger">
+      <span class="alert-icon">🚨</span>
+      <div>
+        <strong>Красный флаг:</strong> обещания net yield 10–12%+ без независимого подтверждения
+        арендатора и управляющей компании. Всегда проверяйте цифры по договору, а не по брошюре.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: ЛОКАЦИИ -->
+  <div class="section" id="tab5">
+    <h2>Локации с наибольшим шансом роста после сдачи</h2>
+    <p class="intro">Где инвестор получает максимум от капитализации и аренды</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Локация</th>
+          <th>Динамика</th>
+          <th>Профиль инвестора</th>
+          <th>Пример проекта</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Koh Pich / Diamond Island</strong></td>
+          <td>~9,3% годовых с 2020 г. vs 5,1% по городу</td>
+          <td>Баланс риска и доходности, премиум с инфраструктурой</td>
+          <td>Diamond Bay Garden (OCIC)</td>
+        </tr>
+        <tr>
+          <td><strong>BKK1 и Chamkarmon</strong></td>
+          <td>Лучшая арендная ликвидность, высокие доходы</td>
+          <td>Долгосрочная аренда экспатам и менеджерам</td>
+          <td>ODOM, G.A.T.O Tower</td>
+        </tr>
+        <tr>
+          <td><strong>Приаэропортный коридор</strong></td>
+          <td>Потенциал после загрузки аэропорта Techo</td>
+          <td>Спекулятивная ставка, горизонт 5+ лет</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><strong>Waterfront</strong></td>
+          <td>Опережает рынок в оптимистичном сценарии</td>
+          <td>Премиум с видом на воду</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-success">
+      <span class="alert-icon">✅</span>
+      <div>
+        <strong>Вывод по локациям:</strong> Koh Pich — лидер по сочетанию готовности, бренда OCIC и потенциала стоимости.
+        BKK1/Chamkarmon — для арендного cash-flow, но вход дороже.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: СТРАТЕГИЯ -->
+  <div class="section" id="tab6">
+    <h2>Практическая стратегия для клиента</h2>
+    <p class="intro">4 сценария в зависимости от профиля инвестора</p>
+
+    <div class="strategy-step s1">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h4>Минимальный риск · готовый актив</h4>
+        <p><strong>Diamond Bay Garden (OCIC)</strong> — уже идёт передача ключей, не стройка «на бумаге».
+        Низкий строительный риск, управление Somerset/Ascott.</p>
+      </div>
+    </div>
+
+    <div class="strategy-step s2">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h4>Баланс цены и доходности</h4>
+        <p><strong>Kingston Royale</strong> или качественные проекты <strong>Chip Mong Land / Borey Peng Huoth</strong>
+        в проверенных локациях. Горизонт 3–5 лет.</p>
+      </div>
+    </div>
+
+    <div class="strategy-step s3">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h4>Премиальный рост стоимости</h4>
+        <p><strong>ODOM, J Tower 3, проекты Urbanland.</strong> Только при горизонте от 5 лет
+        и готовности к менее ликвидному люксовому рынку.</p>
+      </div>
+    </div>
+
+    <div class="strategy-step s4">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <h4>⛔ Избегать на старте</h4>
+        <p><strong>MIRAKU / G.A.T.O Tower</strong> и любые проекты с обещанием net yield выше 8–9%
+        без независимого подтверждения арендатора и УК.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: ЧЕК-ЛИСТ -->
+  <div class="section" id="tab7">
+    <h2>Обязательные проверки перед оплатой</h2>
+    <p class="intro">Интерактивный чек-лист — кликайте по пунктам, чтобы отметить выполненные</p>
+
+    <ul class="checklist" id="checklist">
+      <li><span>Лицензия девелопера и разрешение MLMUPC на конкретный корпус</span></li>
+      <li><span>Возможность оформления Strata Title</span></li>
+      <li><span>Квартира выше первого этажа</span></li>
+      <li><span>Соблюдение лимита 70% иностранцев в проекте</span></li>
+      <li><span>В договоре — фиксированная дата передачи</span></li>
+      <li><span>В договоре — штрафы за просрочку передачи</span></li>
+      <li><span>В договоре — спецификации и гарантийный срок</span></li>
+      <li><span>В договоре — порядок выдачи титула</span></li>
+      <li><span>Независимая оценка реальной арендной ставки после сдачи (не «гарантированная» из брошюры)</span></li>
+      <li><span>Подтверждение, что девелопер не зависит только от предпродаж</span></li>
+      <li><span>Проверка управляющей компании по договору (а не по маркетингу)</span></li>
+    </ul>
+
+    <div class="alert alert-info">
+      <span class="alert-icon">📋</span>
+      <div>
+        <strong>Совет агенту:</strong> распечатайте этот чек-лист для клиента.
+        Пройденный чек-лист — доказательство вашей экспертности и защиты его интересов.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: ИТОГ -->
+  <div class="section" id="tab8">
+    <h2>Итоговый инвестиционный вывод</h2>
+    <p class="intro">Короткая шпаргалка для разговора с клиентом</p>
+
+    <div class="conclusion">
+      <h3>🎯 Что рекомендовать в первую очередь</h3>
+      <ul>
+        <li>🏆 <strong>Наиболее выгодное и наименее рискованное:</strong> Diamond Bay Garden от OCIC на Koh Pich</li>
+        <li>🛡️ <strong>Лучший консервативный девелопер:</strong> Chip Mong Land</li>
+        <li>💎 <strong>Лучший премиальный вариант:</strong> Urbanland (качество и управление)</li>
+        <li>📈 <strong>Реалистичная доходность:</strong> net yield 6–7% + рост стоимости 2–7%</li>
+        <li>🚫 <strong>Избегать:</strong> обещаний двузначной гарантированной прибыли</li>
+      </ul>
+    </div>
+
+    <div class="alert alert-success" style="margin-top: 20px;">
+      <span class="alert-icon">🎓</span>
+      <div>
+        <strong>Поздравляем!</strong> Вы прошли обучающий модуль.
+        Используйте эти данные в работе с клиентами — это основа экспертных рекомендаций агентства «Инвестнедвижимость».
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('.section');
+  const visited = new Set(['tab1']);
+
+  function updateProgress() {
+    const pct = Math.round((visited.size / sections.length) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = pct + '%';
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(b => b.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.tab;
+      document.getElementById(target).classList.add('active');
+      visited.add(target);
+      updateProgress();
+      window.scrollTo({ top: 200, behavior: 'smooth' });
+    });
+  });
+
+  // Checklist
+  document.querySelectorAll('#checklist li').forEach(li => {
+    li.addEventListener('click', () => li.classList.toggle('checked'));
+  });
+
+  updateProgress();
+</script>
+</body>
+</html>
